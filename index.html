@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Кіт + Орбіти</title>
+
+  <style>
+    /* ----------- ОРБІТИ ------------- */
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #000 40%, #111 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    @keyframes orbit1 {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes orbit2 {
+      from { transform: rotate(360deg); }
+      to   { transform: rotate(0deg); }
+    }
+
+    .orbit {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+
+    .orbit1 {
+      width: 400px;
+      height: 400px;
+      animation: orbit1 18s linear infinite;
+    }
+    .orbit2 {
+      width: 600px;
+      height: 600px;
+      animation: orbit2 28s linear infinite;
+    }
+
+    /* ----------- КІТ У ЦЕНТРІ ------------ */
+    .cat {
+      width: 180px;
+      height: 180px;
+      background-image: url("cat_center.png");  /* ТУТ ВСТАВ КОТА, ЯКОГО ХОЧЕШ */
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      z-index: 10;
+    }
+
+    /* ---------- БЛОК З ТРЬОМА ФОТО --------- */
+    .images {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:center;
+      padding:10px;
+      background: rgba(0,0,0,0.18);
+      border-radius:12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+    }
+
+    .photo {
+      width: 220px; 
+      height: 150px;
+      border-radius: 8px;
+      background-color: #222;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;  
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.08);
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 900px) {
+      .photo { width: 170px; height: 120px; }
+    }
+    @media (max-width: 520px) {
+      .images { flex-direction: column; padding:8px; gap:8px; bottom:8px; }
+      .photo { width: 140px; height: 100px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Орбіти -->
+  <div class="orbit orbit1"></div>
+  <div class="orbit orbit2"></div>
+
+  <!-- КІТ У ЦЕНТРІ -->
+  <div class="cat"></div>
+
+  <!-- ТРИ ФОТО -->
+  <div class="images">
+    <div class="photo" style="background-image: url('cat.png');"></div>
+    <div class="photo" style="background-image: url('cat.jpg');"></div>
+    <div class="photo" style="background-image: url('cat.webp');"></div>
+  </div>
+
+</body>
+</html>
